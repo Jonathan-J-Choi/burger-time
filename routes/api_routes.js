@@ -15,9 +15,9 @@ module.exports = function(app) {
   // GET route for getting all of the burgers
   app.get("/api/burgers", function(req, res) {
     // findAll returns all entries for a table when used with no options
-    db.Todo.findAll({}).then(function(dbTodo) {
+    db.Burger.findAll({}).then(function(dbBurger) {
       // We have access to the burgers as an argument inside of the callback function
-      res.json(dbTodo);
+      res.json(dbBurger);
     });
   });
 
@@ -26,12 +26,12 @@ module.exports = function(app) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property
-    db.Todo.create({
-      text: req.body.text,
-      complete: req.body.complete
-    }).then(function(dbTodo) {
+    db.Burger.create({
+      burger_name: req.body.text,
+      devoured: req.body.complete
+    }).then(function(dbBurger) {
       // We have access to the new todo as an argument inside of the callback function
-      res.json(dbTodo);
+      res.json(dbBurger);
     });
   });
 
@@ -39,12 +39,12 @@ module.exports = function(app) {
   // req.params.id
   app.delete("/api/burgers/:id", function(req, res) {
     // We just have to specify which todo we want to destroy with "where"
-    db.Todo.destroy({
+    db.Burger.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbTodo) {
-      res.json(dbTodo);
+    }).then(function(dbBurger) {
+      res.json(dbBurger);
     });
 
   });
@@ -60,8 +60,8 @@ module.exports = function(app) {
       where: {
         id: req.body.id
       }
-    }).then(function(dbTodo) {
-      res.json(dbTodo);
+    }).then(function(dbBurger) {
+      res.json(dbBurger);
     });
   });
 
