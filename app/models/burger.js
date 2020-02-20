@@ -3,5 +3,21 @@ module.exports = function(sequelize, DataTypes) {
     burger_name: DataTypes.STRING,
     devoured: DataTypes.BOOLEAN
   });
+
+
+sequelize
+    .sync({
+      force: true
+    })
+    .then(function() {
+      Burgers.create({
+        burger_name: "hamburger",
+        devoured: false,
+      }),
+      Burgers.create({
+        burger_name: "cheeseburger",
+        devoured: false,
+      });
+    });
   return Burgers;
-};
+}

@@ -20,8 +20,8 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./app/routes/html-routes.js")(app);
-require("./app/routes/api-routes.js")(app);
+// require("./app/routes/html_routes.js")(app);
+require("./app/routes/api_routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
