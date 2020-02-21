@@ -1,12 +1,10 @@
-var express = require("express");
-const db = require("./app/models");
-var exphbs = require("express-handlebars");
-const sequelize = require("sequelize");
-var app = express();
-var PORT = process.env.PORT || 8080;
+const express = require("express");
+const exphbs = require("express-handlebars");
 
-// Database
-const db=require("./app/models");
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+const db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,8 +18,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-// require("./app/routes/html_routes.js")(app);
-require("./app/routes/api_routes.js")(app);
+require("./routes/api_routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
