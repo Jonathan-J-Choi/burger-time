@@ -4,42 +4,39 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
+  app.get("/", function(req, res) {
+    res.render("index");
+  });
 
   // GET route for getting all of the Burgers
-  app.get("/burger", function(req, res) {
-
+  app.get("/burgers", function(req, res) {
     // findAll returns all entries for a table when used with no options
-    db.Burger.findAll({}).then(function(dbBurger) {
-
+    db.Burgers.findAll({}).then(function(burgers) {
       // We have access to the Burgers as an argument inside of the callback function
-      res.json(dbBurger);
+      res.json(burgers);
     });
   });
 
   // POST route for saving a new Burger
-
-  app.post("/newBurger", function(req, res) {
+  app.post("/burgers", function(req, res) {
     console.log(req.body);
-
     // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property (req.body)
-    db.Burger.create({
+    db.Burgers.create({
       burger_name: req.body.burgerName,
-      devoured: false,
     })
-    .then(function(dbBurger) {
-      // We have access to the new Burger as an argument inside of the callback function
-      res.json(dbBurgers);
+    .then(function(dbBurgers) {
+      res.redirect("/")
     });
   });
 
-  // DELETE route for deleting Burgers. We can get the id of the Burger we want to delete from
-  // req.params.id
-  app.delete("/:id", function(req, res) {});
-
-
-  // PUT route for updating Burgers. We can get the updated Burger from req.body
-  app.put("", function(req, res) {});
-
+  // Eat burger
+  app.post("/eat/:id", (req, res) {
+    db.Burgers.update({
+      devoured: 1}, 
+      {where: {id: req.params.id} 
+    })
+    .then (function(dbBurgers) {
+      req.json(burgers);
+    });
+  });
 };

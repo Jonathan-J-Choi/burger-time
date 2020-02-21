@@ -2,17 +2,17 @@ var express = require("express");
 const db = require("./app/models");
 var exphbs = require("express-handlebars");
 const sequelize = require("sequelize");
-
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-
+// Database
+const db=require("./app/models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 // 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
