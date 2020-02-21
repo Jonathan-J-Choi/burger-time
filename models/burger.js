@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  var Burgers = sequelize.define("Burgers", {
+  const Burgers = sequelize.define("Burgers", {
     burger_name: DataTypes.STRING,
     devoured: {type: DataTypes.BOOLEAN, default: 0}
   });
 
-}
+};
 // For Testing
 // sequelize
 //     .sync({
