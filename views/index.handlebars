@@ -22,6 +22,13 @@
           {{!-- Uneaten --}}
           <h2><u>Ordered Burgers</u></h2>
           <ul class="list-group" id="uneaten">
+              {{#each burgers}}
+                <li>
+                  <p>{{this.burger_name}}</p>
+                </li>
+              {{/each}}
+            {{!-- {{#each burgers}} --}}
+            {{!-- {{#unless devoured}} --}}
           </ul>
           <h3>You better finish what you started!</h3>
         </div>
@@ -30,11 +37,12 @@
           {{!-- Eaten --}}
           <h2><u>Burgers Demolished</u></h2>
           <ul class="list-group" id="eaten">
+            {{!-- {{#each burgers}} --}}
+            {{!-- {{#if devoured}} --}}
           </ul>
           <h3>Well done champ!</h3>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
