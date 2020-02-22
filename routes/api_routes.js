@@ -1,5 +1,5 @@
 // Requiring our models
-const db = require("./models");
+const db = require("../models");
 
 // Routes
 // =============================================================
@@ -20,9 +20,7 @@ module.exports = app => {
   app.post("/burgers", (req, res) => {
     console.log(req.body);
     // create takes an argument of an object describing the item we want to
-    db.Burgers.create({
-      burger_name: req.body.burgerName,
-    })
+    db.Burgers.create({ burger_name: req.body.burger_name, devoured: 0 })
     .then(() => {
       res.redirect("/")
     });

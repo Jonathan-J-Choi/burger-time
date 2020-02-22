@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   const Burgers = sequelize.define("Burgers", {
     burger_name: DataTypes.STRING,
-    devoured: {type: DataTypes.BOOLEAN, default: 0}
+    devoured: DataTypes.BOOLEAN
   });
-
+  return Burgers;
 };
 // For Testing
 // sequelize
